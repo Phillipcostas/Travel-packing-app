@@ -10,6 +10,7 @@ const morgan = require('morgan');
 const session = require('express-session');
 
 const authController = require('./controllers/auth.js');
+const itemsController = require('./controllers/items.js');
 
 const port = process.env.PORT ? process.env.PORT : '3000';
 
@@ -43,6 +44,7 @@ app.get('/', (req, res) => {
   app.use(passUserToView)
   app.use('/auth', authController);
   app.use(isSignedIn);
+  app.use('/users/:userId/items',itemsController);
 
 
 app.listen(port, () => {

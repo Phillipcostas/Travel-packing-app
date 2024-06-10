@@ -6,9 +6,12 @@
     <title>Travel App</title>
 </head>
 <body>
-    <%- include('./partials/_navbar.ejs') %>
+    <%- include('partials/_navbar.ejs') %>
     <h1>Welcome to Your Travel Packing App!</h1>
     <p>Here we will help you organize all your packing needs for your next traveling vacation!</p>
-    
+    <p>First enter the zip code of the location you are traveling to, this will provide you with the local weather report!</p>
+
+    <a href="/users/:userId/items/show">Click here to access your checklist!</a>
+
 </body>
 </html>
