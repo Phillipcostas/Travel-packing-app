@@ -17,19 +17,6 @@ router.get('/show', async (req, res) => {
   });
 
 
-//   router.post('/', async (req, res) => {
-//     try {
-//       console.log(req.body)
-//         const currentUser = await User.findById(req.session.user._id); 
-//         currentUser.suitcase.push(req.body);
-//         await currentUser.save()
-//         res.redirect(`/users/${currentUser._Id}/items`);
-//     } catch (error) {
-//         console.log(error);
-//         res.redirect('/');
-//     }
-// })
-
 
   router.get('/suitcase/:itemsId/edit', async (req, res) => {
     try {
@@ -46,5 +33,25 @@ router.get('/show', async (req, res) => {
   })
 
 
+router.get('/suitcase/itemsId/edit', async (req, res) => {
+  items: [
+    category, String,
+  ]
+});
+ 
+
+
+//   router.post('/', async (req, res) => {
+//     try {
+//       console.log(req.body)
+//         const currentUser = await User.findById(req.session.user._id); 
+//         currentUser.suitcase.push(req.body);
+//         await currentUser.save()
+//         res.redirect(`/users/${currentUser._Id}/items`);
+//     } catch (error) {
+//         console.log(error);
+//         res.redirect('/');
+//     }
+// })
 
 module.exports = router; 
