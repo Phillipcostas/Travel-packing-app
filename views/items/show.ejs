@@ -8,20 +8,23 @@
 <body>
     <%- include('../partials/_navbar.ejs') %>
     <h1>All the items that you are going to need for the perfect vaction!</h1>
+
     <p>Weather information to be enter here!</p>
     <p>Traveling location to be entered here</p>
+
     <ul>
     <lh>Tooletries</lh>
-        <form action="/update" method="POST">
+        <form action="/users/<%= user._id %>/items/suitcase/:itemsId/edit" type="submit" method="GET">
             <ul>
                 <% tooletries.forEach(function(item) { %>
                     <li>
-                        <input type="checkbox" id="<%= item.id %>" name="<%= item.id %>" <% if (item.packed) { %>checked<% } %>>
+                        <input type="checkbox" type="submit" name="<%= item.id %>" <% if (item.packed) { %>checked<% } %>>
                         <label for="<%= item.id %>"><%= item.name %></label>
                     </li>
                 <% }); %>
             </ul>
-            <a href="/users/<%= user._id %>/items/suitcase/:itemsId/edit">Update Tooletires List</a>
+            <!-- <a href="/users/<%= user._id %>/items/suitcase/:itemsId/edit">Update Tooletires List</a> -->
+             <button type="submit">Submit</button>
         </form>
     </ul>
     </br>
@@ -31,7 +34,7 @@
             <ul>
                 <% essentials.forEach(function(item) { %>
                     <li>
-                        <input type="checkbox" id="<%= item.id %>" name="<%= item.id %>" <% if (item.packed) { %>checked<% } %>>
+                        <input type="checkbox"  name="<%= item.id %>" <% if (item.packed) { %>checked<% } %>>
                         <label for="<%= item.id %>"><%= item.name %></label>
                     </li>
                 <% }); %>
@@ -45,7 +48,7 @@
             <ul>
                 <% specialityClothes.forEach(function(item) { %>
                     <li>
-                        <input type="checkbox" id="<%= item.id %>" name="<%= item.id %>" <% if (item.packed) { %>checked<% } %>>
+                        <input type="checkbox"  name="<%= item.id %>" <% if (item.packed) { %>checked<% } %>>
                         <label for="<%= item.id %>"><%= item.name %></label>
                     </li>
                 <% }); %>
@@ -59,7 +62,7 @@
             <ul>
                 <% jackets.forEach(function(item) { %>
                     <li>
-                        <input type="checkbox" id="<%= item.id %>" name="<%= item.id %>" <% if (item.packed) { %>checked<% } %>>
+                        <input type="checkbox" name="<%= item.id %>" <% if (item.packed) { %>checked<% } %>>
                         <label for="<%= item.id %>"><%= item.name %></label>
                     </li>
                 <% }); %>
@@ -73,7 +76,7 @@
             <ul>
                 <% lounge.forEach(function(item) { %>
                     <li>
-                        <input type="checkbox" id="<%= item.id %>" name="<%= item.id %>" <% if (item.packed) { %>checked<% } %>>
+                        <input type="checkbox"  name="<%= item.id %>" <% if (item.packed) { %>checked<% } %>>
                         <label for="<%= item.id %>"><%= item.name %></label>
                     </li>
                 <% }); %>
@@ -81,3 +84,4 @@
             <a href="/users/<%= user._id %>/items/suitcase/:itemsId/edit">Update Lounge Wear/Athletic Clothes</a>
         </form>
     </br>
+<footer>Designed by: Phillip Costas for his wife</footer>

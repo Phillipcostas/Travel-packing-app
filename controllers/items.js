@@ -3,6 +3,14 @@ const router = express.Router();
 
 const User = require('../models/user.js')
 
+// function saveCheckboxStates() {
+//   const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+//   checkboxes.forEach((checkbox) => {
+//     localStorage.setItem(checkbox.id, checkbox.checked);
+//   });
+// }
+// saveCheckboxStates();
+
 let tooletries = [
   { name: 'Toothbrush', packed: false },
   { name: 'Tooth Paste', packed: false },
@@ -79,17 +87,6 @@ router.get('/show', async (req, res) => {
     }
   });
 
-  app.post('/edit', (req, res) => {
-    const updatedItems = req.body;
-    Object.keys(updatedItems).forEach(itemId => {
-        const itemIndex = clothesList.findIndex(item => item.id === parseInt(itemId));
-        if (itemIndex !== -1) {
-            suitcase[itemIndex].packed = true;
-        }
-    });
-    res.redirect('/');
-  });
-
 
   router.get('/suitcase/:itemsId/edit', async (req, res) => {
     try {
@@ -153,3 +150,16 @@ router.delete('/suitcase/:itemsId', async (req, res) => {
 
 
 module.exports = router; 
+
+
+
+  // app.post('/edit', (req, res) => {
+  //   const updatedItems = req.body;
+  //   Object.keys(updatedItems).forEach(itemId => {
+  //       const itemIndex = clothesList.findIndex(item => item.id === parseInt(itemId));
+  //       if (itemIndex !== -1) {
+  //           suitcase[itemIndex].packed = true;
+  //       }
+  //   });
+  //   res.redirect('/');
+  // });
