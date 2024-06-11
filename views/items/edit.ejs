@@ -9,5 +9,21 @@
     <%- include('../partials/_navbar.ejs') %>
     <p>Editing of each section in one place!</p>
     
+    <form action="/users/items/suitcase?_method=PUT" method="POST">
+        <input type="textbox" name="name" value="<%= suitcase.items %>">
+        <input type="checkbox">
+    </form>
+
+
+    <form action="/users/items/suitcase/?_method=DELETE" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <button type="submit">Delete</button>
+    </form>
+
+    <form action="/users/items/suitcase?_method=PUT" method="POST">
+        <input type="hidden" name="_method" value="PUT">
+        <button type="submit">update</button>
+    </form>
+ 
 </body>
 </html>

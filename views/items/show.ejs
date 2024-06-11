@@ -11,38 +11,73 @@
     <p>Weather information to be enter here!</p>
     <p>Traveling location to be entered here</p>
     <ul>
-        <lh><a href="/users/<%= user._id %>/items/suitcase/:itemsId/edit">Toolitries</a></lh>
-        
-        <li>Something here</li>
-        <input type="checkbox">
+    <lh>Tooletries</lh>
+        <form action="/update" method="POST">
+            <ul>
+                <% tooletries.forEach(function(item) { %>
+                    <li>
+                        <input type="checkbox" id="<%= item.id %>" name="<%= item.id %>" <% if (item.packed) { %>checked<% } %>>
+                        <label for="<%= item.id %>"><%= item.name %></label>
+                    </li>
+                <% }); %>
+            </ul>
+            <a href="/users/<%= user._id %>/items/suitcase/:itemsId/edit">Update Tooletires List</a>
+        </form>
+    </ul>
+    </br>
 
-    </ul>
+    <lh>Essentials</lh>
+        <form action="/update" method="POST">
+            <ul>
+                <% essentials.forEach(function(item) { %>
+                    <li>
+                        <input type="checkbox" id="<%= item.id %>" name="<%= item.id %>" <% if (item.packed) { %>checked<% } %>>
+                        <label for="<%= item.id %>"><%= item.name %></label>
+                    </li>
+                <% }); %>
+            </ul>
+            <a href="/users/<%= user._id %>/items/suitcase/:itemsId/edit">Update Essentials List</a>
+        </form>
     </br>
-    <ul>
-        <lh><a href="/users/<%= user._id %>/items/suitcase/:itemsId/edit">Essentials</a></</lh>
-        <li>SOmething here</li><input type="checkbox">
-        
-    </ul>
+
+    <lh>Speciality Clothes</lh>
+        <form action="/update" method="POST">
+            <ul>
+                <% specialityClothes.forEach(function(item) { %>
+                    <li>
+                        <input type="checkbox" id="<%= item.id %>" name="<%= item.id %>" <% if (item.packed) { %>checked<% } %>>
+                        <label for="<%= item.id %>"><%= item.name %></label>
+                    </li>
+                <% }); %>
+            </ul>
+            <a href="/users/<%= user._id %>/items/suitcase/:itemsId/edit">Update Speciality Clothes List</a>
+        </form>
     </br>
-    <ul>
-        <lh><a href="/users/<%= user._id %>/items/suitcase/:itemsId/edit">Speciality Clothes</a></</lh>
-        <li>Something here</li><input type="checkbox">
-    </ul>
+
+    <lh>Jackets/Sweaters</lh>
+        <form action="/update" method="POST">
+            <ul>
+                <% jackets.forEach(function(item) { %>
+                    <li>
+                        <input type="checkbox" id="<%= item.id %>" name="<%= item.id %>" <% if (item.packed) { %>checked<% } %>>
+                        <label for="<%= item.id %>"><%= item.name %></label>
+                    </li>
+                <% }); %>
+            </ul>
+            <a href="/users/<%= user._id %>/items/suitcase/:itemsId/edit">Update Jackets/SweatersList</a>
+        </form>
     </br>
-    <ul>
-        <lh><a href="/users/<%= user._id %>/items/suitcase/:itemsId/edit">Jackets/Sweaters</a></</lh>
-        <li>something here</li><input type="checkbox">
-    </ul>
+
+    <lh>Lounge wear/Athletic Clothes</lh>
+        <form action="/update" method="POST">
+            <ul>
+                <% lounge.forEach(function(item) { %>
+                    <li>
+                        <input type="checkbox" id="<%= item.id %>" name="<%= item.id %>" <% if (item.packed) { %>checked<% } %>>
+                        <label for="<%= item.id %>"><%= item.name %></label>
+                    </li>
+                <% }); %>
+            </ul>
+            <a href="/users/<%= user._id %>/items/suitcase/:itemsId/edit">Update Lounge Wear/Athletic Clothes</a>
+        </form>
     </br>
-    <ul>
-        <lh><a href="/users/<%= user._id %>/items/suitcase/:itemsId/edit">Socks/Underwear</a></</lh>
-        <li>something here</li><input type="checkbox">
-    </ul>
-    </br>
-    <ul>
-        <lh><a href="/users/<%= user._id %>/items/suitcase/:itemsId/edit">Lounge wear/Athletic Clothes</a></</lh>
-        <li>something here</li><input type="checkbox">
-    </ul>
-    </br>
-</body>
-</html>
