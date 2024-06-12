@@ -16,14 +16,16 @@
     <lh>Tooletries</lh>
         <form action="/users/<%= user._id %>/items/suitcase/:itemsId/edit" type="submit" method="GET">
             <ul>
-                <% tooletries.forEach(function(item) { %>
+                <% toiletries.forEach(function(item) { %>
                     <li>
-                        <input type="checkbox" type="submit" name="<%= item.id %>" <% if (item.packed) { %>checked<% } %>>
+                        <input name="<%= item.id %>">
                         <label for="<%= item.id %>"><%= item.name %></label>
+
+                        <label for="isPacked">Pack It?</label>
+                        <input type="checkbox" name="isPacked" id="isPacked"/>
                     </li>
                 <% }); %>
             </ul>
-            <!-- <a href="/users/<%= user._id %>/items/suitcase/:itemsId/edit">Update Tooletires List</a> -->
              <button type="submit">Submit</button>
         </form>
     </ul>

@@ -3,82 +3,19 @@ const router = express.Router();
 
 const User = require('../models/user.js')
 
-// function saveCheckboxStates() {
-//   const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-//   checkboxes.forEach((checkbox) => {
-//     localStorage.setItem(checkbox.id, checkbox.checked);
-//   });
-// }
-// saveCheckboxStates();
 
-let tooletries = [
-  { name: 'Toothbrush', packed: false },
-  { name: 'Tooth Paste', packed: false },
-  { name: 'Body Wash', packed: false },
-  { name: 'Shampoo', packed: false },
-  { name: 'Deoderant', packed: false },
-  { name: 'Hair Brush', packed: false },
-  { name: 'Make-up', packed: false },
-];
-
-let essentials = [
-  { name: 'Drives License', packed: false },
-  { name: 'Passport', packed: false },
-  { name: 'Phone Charger/cord', packed: false },
-  { name: 'Medications', packed: false },
-  { name: 'Epi-pen', packed: false },
-  { name: 'Boarding Pass Downloaded', packed: false },
-  { name: 'T-shirts', packed: false },
-];
-
-let specialityClothes = [
-  { name: 'Dress', packed: false },
-  { name: 'Suit', packed: false },
-  { name: '', packed: false },
-  { name: '', packed: false },
-  { name: '', packed: false },
-  { name: '', packed: false },
-  { name: '', packed: false },
-];
-
-let jackets = [
-  { name: 'Rain Jacket', packed: false },
-  { name: 'Light Jacket', packed: false },
-  { name: 'Ski Jacket', packed: false },
-  { name: 'Hoodie', packed: false },
-  { name: 'Sweater', packed: false },
-  { name: '', packed: false },
-  { name: '', packed: false },
-];
-
-let lounge = [
-  { name: 'Athletic Shorts', packed: false },
-  { name: 'T-shirts', packed: false },
-  { name: 'Pajamas', packed: false },
-  { name: '', packed: false },
-  { name: '', packed: false },
-  { name: '', packed: false },
-  { name: '', packed: false },
-];
+// const categories = await User.find()[0].suitcase;
 
 
-app.get('/suitcase', (req, res) => {
-  res.render('items/show.ejs', { items: tooletries, items: essentials, items: specialityClothes, items: jackets, items: lounge});
-});
+router.get('/suitcase', (req, res) => {
+  res.render('items/showCategories.ejs', )})
 
 
-
-router.get('/show', async (req, res) => {
+router.get('/showCategories', async (req, res) => {
     try {
       const currentUser = await User.findById(req.session.user._id);
-      console.log(essentials)
-      res.render('items/show.ejs', {
-        suitcase: currentUser.suitcase,
-        tooletries: tooletries,
-        essentials: essentials,
-        specialityClothes: specialityClothes,
-        jackets: jackets,
-        lounge: lounge,
+      res.render('items/showCategories.ejs', {
+    
       });
     } catch (error) {
 
@@ -90,7 +27,7 @@ router.get('/show', async (req, res) => {
 
   router.get('/suitcase/:itemsId/edit', async (req, res) => {
     try {
-      const currentUser = await User.findById(req.session.user._id);
+      const currentUser = await User.findById(category);
       const suitcase = currentUser.suitcase;
       res.render('items/edit.ejs', {
         suitcase: suitcase,
@@ -101,23 +38,35 @@ router.get('/show', async (req, res) => {
     }
   })
 
+ router.get('/suitcase/:category', async (req, res) => {
+    const currentUser = await User.findById(req.session.user._id)
 
-router.put('/suitcase/:itemId', async (req, res) => {
-  try {
-    const currentUser = await User.findById(req.session.user._id);
-    const suitcase = currentUser.suitcase.id(req.params.itemId);
-    suitcase.set(req.body);
-    // console.log(req.body)
-    await currentUser.save();
-    res.render('items/edit.ejs', {
-      items: suitcase,
+    const suitcase = currentUser.suitcase
+
+      // if (req.body.isPacked === 'on') {
+      //   req.body.isPacked = true;
+      // } else {
+      //   req.body.isPacked = false;
+      // }
+
+      console.log(currentUser)
+      console.log(suitcase)
+
+    res.render('items/category.ejs', {
+      category: suitcase,
     });
-  } catch (error) {
-    console.log(error);
-    res.redirect('/')
-  }
-});
- 
+  })
+
+  // app.put('/items/suitcase/:category', async (req, res) => {
+  //      await User.find(User._id).suitcase.categoryId(itemId) = {
+
+  //     if (req.body.isPacked === 'on') {
+  //       req.body.isPacked = true;
+  //     } else {
+  //       req.body.isPacked = false;
+  //     }
+  //      })
+  //      res.render('/items/category')
 
 
 
@@ -149,17 +98,5 @@ router.delete('/suitcase/:itemsId', async (req, res) => {
 
 
 
+
 module.exports = router; 
-
-
-
-  // app.post('/edit', (req, res) => {
-  //   const updatedItems = req.body;
-  //   Object.keys(updatedItems).forEach(itemId => {
-  //       const itemIndex = clothesList.findIndex(item => item.id === parseInt(itemId));
-  //       if (itemIndex !== -1) {
-  //           suitcase[itemIndex].packed = true;
-  //       }
-  //   });
-  //   res.redirect('/');
-  // });

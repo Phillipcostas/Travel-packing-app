@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Category</title>
+</head>
+<body>
+    <ul>
+        <lh>Toiletries</lh>
+            <form action="/users/<%= user._id %>/items/suitcase/:itemsId/edit" type="submit" method="GET">
+                <ul>
+                    <% category.forEach(function(item) { %>
+                        <li>
+                            <input name="<%= item.id %>">
+                            <label for="<%= item.id %>"><%= item.name %></label>
+    
+                            <label for="isPacked">Pack It?</label>
+                            <input type="checkbox" name="isPacked" id="isPacked" />
+                        </li>
+                    <% }); %>
+                </ul>
+                 <button type="submit">Submit</button>
+            </form>
+        </ul>
+</body>
+</html>
