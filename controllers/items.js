@@ -4,23 +4,31 @@ const router = express.Router();
 const User = require('../models/user.js')
 
 
-// const categories = await User.find()[0].suitcase;
 
 
-router.get('/suitcase', (req, res) => {
-  res.render('items/showCategories.ejs', )})
+
+router.get('/showCategories', async (req, res) => {
+  try {
+    const user = await User.find();
+    const categories = user[0].suitcase;
+    res.render('items/showCategories.ejs')
+  } catch (error) {
+    console.log(error)
+    }
+})
 
 
 router.get('/showCategories', async (req, res) => {
     try {
-      const currentUser = await User.findById(req.session.user._id);
-      res.render('items/showCategories.ejs', {
+      console.log('hi')
+      // const categories = await User.find()[0].suitcase;
+      // const currentUser = await User.findById(req.session.user._id);
+      res.render('hello', {
     
       });
     } catch (error) {
 
       console.log(error)
-      res.render("something!")
     }
   });
 
