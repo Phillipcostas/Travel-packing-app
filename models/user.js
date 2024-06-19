@@ -38,7 +38,6 @@ userSchema = mongoose.Schema
     default: 
     [
         {
-            type: categorySchema,
             name: 'toiletries', 
             items:  [
                 {name: 'Toothbrush', packed: false},
@@ -51,7 +50,6 @@ userSchema = mongoose.Schema
              ]  
         },
         {
-            type: categorySchema,
             name: 'essentials', 
             items:    [
                 {name: 'Drivers License', packed: false},
@@ -63,7 +61,6 @@ userSchema = mongoose.Schema
            ]
         },
         {
-            type: categorySchema,
             name: 'SpecialityClothes', 
             items:    [
                 {name: 'Dress', packed: false},
@@ -75,7 +72,6 @@ userSchema = mongoose.Schema
            ]
         },
         {
-            type: categorySchema,
             name: 'Jackets', 
             items:    [
                 {name: 'Rain Jacket', packed: false},
@@ -87,7 +83,6 @@ userSchema = mongoose.Schema
            ]
         },
         {
-            type: categorySchema,
             name: 'lounge', 
             items:    [
                 {name: 'Athetic Shorts', packed: false},

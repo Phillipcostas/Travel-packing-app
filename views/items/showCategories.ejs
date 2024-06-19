@@ -10,30 +10,34 @@
     <h1>All the items that you are going to need for the perfect vacation!</h1>
 
     <h2>Toiletries</h2>
-    <form action="/users/<%= user._id %>/items/suitcase/:itemsId/edit" method="GET">
+    <form action="/<%=suitcase[0]._id%>/edit?_method=PUT" method="POST">
         <ul>
-            <% suitcase.toiletries.forEach(function(item) { %>
+            <% suitcase[suitcase.findIndex(category => category.name === 'toiletries')].items.forEach(function(item) { %>
                 <li>
-                    <input type="checkbox" name="<%= item.id %>" id="<%= item.id %>" <% if (item.packed) { %>checked<% } %>>
+                    <input type="checkbox" name="<%= item.id %>" id="<%= item.id %>" <% if (item.packed) { %>unchecked<% } %>>
                     <label for="<%= item.id %>"><%= item.name %></label>
                     <label for="isPacked">Pack It?</label>
-                    <input type="checkbox" name="isPacked" id="isPacked">
                 </li>
             <% }); %>
         </ul>
         <button type="submit">Update Toiletries List</button>
     </form>
+    <a href="/users/<%= user._id %>/items/edit">Edit</a>
     <br>
 
     <h2>Essentials</h2>
     <form action="/update" method="POST">
         <ul>
-            <% suitcase.essentials.forEach(function(item) { %>
+            
+            <% suitcase[suitcase.findIndex(category => category.name === 'essentials')].items.forEach(function(item) { %>
                 <li>
-                    <input type="checkbox" name="<%= item.id %>" id="<%= item.id %>" <% if (item.packed) { %>checked<% } %>>
+                    <input type="checkbox" name="<%= item.id %>" id="<%= item.id %>" <% if (item.packed) { %>unchecked<% } %>>
                     <label for="<%= item.id %>"><%= item.name %></label>
+                    <label for="isPacked">Pack It?</label>
+                    <!-- <input type="checkbox" name="isPacked" id="isPacked"> -->
                 </li>
             <% }); %>
+
         </ul>
         <button type="submit">Update Essentials List</button>
     </form>
@@ -42,12 +46,16 @@
     <h2>Specialty Clothes</h2>
     <form action="/update" method="POST">
         <ul>
-            <% suitcase.specialityClothes.forEach(function(item) { %>
+            
+            <% suitcase[suitcase.findIndex(category => category.name === 'SpecialityClothes')].items.forEach(function(item) { %>
                 <li>
-                    <input type="checkbox" name="<%= item.id %>" id="<%= item.id %>" <% if (item.packed) { %>checked<% } %>>
+                    <input type="checkbox" name="<%= item.id %>" id="<%= item.id %>" <% if (item.packed) { %>unchecked<% } %>>
                     <label for="<%= item.id %>"><%= item.name %></label>
+                    <label for="isPacked">Pack It?</label>
+                    <!-- <input type="checkbox" name="isPacked" id="isPacked"> -->
                 </li>
             <% }); %>
+
         </ul>
         <button type="submit">Update Specialty Clothes List</button>
     </form>
@@ -56,12 +64,16 @@
     <h2>Jackets/Sweaters</h2>
     <form action="/update" method="POST">
         <ul>
-            <% suitcase.jackets.forEach(function(item) { %>
+            
+            <% suitcase[suitcase.findIndex(category => category.name === 'Jackets')].items.forEach(function(item) { %>
                 <li>
-                    <input type="checkbox" name="<%= item.id %>" id="<%= item.id %>" <% if (item.packed) { %>checked<% } %>>
+                    <input type="checkbox" name="<%= item.id %>" id="<%= item.id %>" <% if (item.packed) { %>unchecked<% } %>>
                     <label for="<%= item.id %>"><%= item.name %></label>
+                    <label for="isPacked">Pack It?</label>
+                    <!-- <input type="checkbox" name="isPacked" id="isPacked"> -->
                 </li>
             <% }); %>
+
         </ul>
         <button type="submit">Update Jackets/Sweaters List</button>
     </form>
@@ -70,12 +82,16 @@
     <h2>Lounge Wear/Athletic Clothes</h2>
     <form action="/update" method="POST">
         <ul>
-            <% suitcase.lounge.forEach(function(item) { %>
+            
+            <% suitcase[suitcase.findIndex(category => category.name === 'lounge')].items.forEach(function(item) { %>
                 <li>
-                    <input type="checkbox" name="<%= item.id %>" id="<%= item.id %>" <% if (item.packed) { %>checked<% } %>>
+                    <input type="checkbox" name="<%= item.id %>" id="<%= item.id %>" <% if (item.packed) { %>unchecked<% } %>>
                     <label for="<%= item.id %>"><%= item.name %></label>
+                    <label for="isPacked">Pack It?</label>
+                    <!-- <input type="checkbox" name="isPacked" id="isPacked"> -->
                 </li>
             <% }); %>
+
         </ul>
         <button type="submit">Update Lounge Wear/Athletic Clothes List</button>
     </form>
