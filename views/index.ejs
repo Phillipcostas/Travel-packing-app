@@ -8,12 +8,26 @@
 </head>
 <body>
     <%- include('partials/_navbar.ejs') %>
+
+ <div class="center-text"
     <h1>Welcome to Your Travel Packing App!</h1>
     <p>Here we will help you organize all your packing needs for your next traveling vacation!</p>
+</div>
 
-    <p>Weather Information Zip Code or Location to be entered: HERE</p>
-    <p>Traveling Location or Zip Code to be entered: HERE</p>
+    <div class="input-container">
+    <form class="input-form" action="/weather" method="GET">
+        <label for="weatherLocation">Weather Information Zip Code or Location:</label>
+        <input type="text" id="weatherLocation" name="weatherLocation" placeholder="Enter Zip Code or Location" required>
+        <button type="submit">Get Weather</button>
+    </form>
+
+    <form class="input-form" action="/travel" method="GET">
+        <label for="travelLocation">Traveling Location or Zip Code:</label>
+        <input type="text" id="travelLocation" name="travelLocation" placeholder="Enter Travel Location or Zip Code" required>
+        <button type="submit">Plan Trip</button>
+    </form>
 </br>
+</div>
 <a href="users/<%= user._id %>/items/showCategories">View my Checklist</a>
 </body>
 </html>

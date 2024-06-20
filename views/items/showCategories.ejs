@@ -10,6 +10,10 @@
     <% include('../partials/_navbar.ejs') %>
     <h1>All the items that you are going to need for the perfect vacation!</h1>
 
+
+    <div class="category-container">
+    <section class="category-section">
+
     <h2>Toiletries</h2>
     <form action="/users/<%= user._id %>/items/<%=suitcase[0]._id%>/showCategories?_method=PUT" method="POST">
         <ul>
@@ -25,7 +29,9 @@
     </form>
     <a href="/users/<%= user._id %>/items/edit">Edit</a>
     <br>
+</section>
 
+<section class="category-section">
     <h2>Essentials</h2>
     <form action="/update" method="POST">
         <ul>
@@ -44,7 +50,11 @@
     </form>
     <a href="/users/<%= user._id %>/items/edit">Add items to Essentials List</a>
     <br>
+</section>
+</div>
 
+<div class="category-container">
+<section class="category-section">
     <h2>Specialty Clothes</h2>
     <form action="/update" method="POST">
         <ul>
@@ -63,7 +73,10 @@
     </form>
     <a href="/users/<%= user._id %>/items/edit">Add Items to Speacialty Clothes Lists</a>
     <br>
+</section>
 
+
+    <section class="category-section">
     <h2>Jackets/Sweaters</h2>
     <form action="/update" method="POST">
         <ul>
@@ -82,7 +95,11 @@
     </form>
     <a href="/users/<%= user._id %>/items/edit">Add Items to Jackets List</a>
     <br>
+</section>
+</div>
 
+<div class="category-container">
+    <section class="category-section">
     <h2>Lounge Wear/Athletic Clothes</h2>
     <form action="/update" method="POST">
         <ul>
@@ -101,7 +118,8 @@
     </form>
     <a href="/users/<%= user._id %>/items/edit">Add Items to Lounge Wear List</a>
     <br>
-
+</section>
+</div>
     <footer>Designed by: Phillip Costas for his wife</footer>
 </body>
 </html>
