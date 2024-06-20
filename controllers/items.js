@@ -9,43 +9,66 @@ router.get('/showCategories', async (req, res) => {
   try {
     const user = await User.find({_id:req.session.user._id});
     const suitcase = user[0].suitcase;
-    console.log(user)
+    // console.log(user)
     res.render('items/showCategories.ejs', {suitcase:suitcase, user:user[0]});
   } catch (error) {
     console.log(error)
     }
 })
 
+
+
 router.get("/edit", async (req, res) => {
-  const user = await User.find({_id:req.session.user._id});
-  const foundItem = await User.findById(req.params.itemsId);
-  res.render("items/edit.ejs", {user:user}, {
-    item: foundItem
+  try {
+    const user = await User.find({_id:req.session.user._id});
+    const suitcase = user[0].suitcase;
+    // console.log(user)
+    res.render('items/edit.ejs', {suitcase:suitcase, user:user[0]});
+  } catch (error) {
+    console.log(error)
+    }
+})
+
+
+
+router.put("/:items/showCategories", async (req, res) => {
+  console.log({body:req.body, params:req.params, query:req.query})
+  // if (req.body.isPacked === "on") {
+  //   req.body.isPacked = true;
+  // } else {
+  //   req.body.isPacked = false;
+  // } 
+  const user = await User.findById(req.session.user._id)
+  const category = user.suitcase.find(x => x._id.toString() === req.params.items)
+  // const item = category.items.id(req.body)
+  console.log({user, category})
+  for (const [key, value] of Object.entries(req.body)) {
+    const x = category.items.id(key)
+    if (x != null){
+      x.packed = value
+    }
+  } 
+  await user.save()
+  // const user = await User.find({_id:req.session.user._id});
+  const suitcase = user.suitcase;
+  // console.log(User)
+  // await User.findByIdAndUpdate(req.session.user._id, {suitcase:{categories:req.params.items}});
+  res.render('items/showCategories.ejs', {suitcase, user});
 });
-});
 
 
-
-router.put("/:itemsId/edit", async (req, res) => {
-  console.log(req)
-  if (req.body.isPacked === "on") {
-    req.body.isPacked = true;
-  } else {
-    req.body.isPacked = false;
-  }
-  await suitcase.findByIdAndUpdate(req.params.itemsId, req.body);
-  res.redirect(`items/showCategories.ejs`);
-});
-
-
-
-
-
-
-
-
-
-
+router.delete('/items/showCategories', async (req, res) => {
+    try {
+    const currentUser = await User.findById(req.session.user._id);
+    currentUser.pantry.id(req.params.foodId).deleteOne();
+    await currentUser.save();
+    const suitcase = user[0].suitcase;
+    res.render('items/showCategories.ejs', {suitcase:suitcase, user:user[0]});
+    } catch (error) {
+      console.log(error);
+      res.redirect('/');
+    }
+  })
 
 
 module.exports = router; 
@@ -83,17 +106,7 @@ module.exports = router;
 //     res.redirect('/')
 //   }
 // })
-// router.delete('/suitcase/:itemsId', async (req, res) => {
-  //   try {
-  //   const currentUser = await User.findById(req.session.user._id);
-  //   currentUser.pantry.id(req.params.foodId).deleteOne();
-  //   await currentUser.save();
-  //   res.redirect(`/users/${currentUser._id}/items`)
-  //   } catch (error) {
-  //     console.log(error);
-  //     res.redirect('/');
-  //   }
-  // })
+
   
   
   //   router.post('/', async (req, res) => {

@@ -10,11 +10,11 @@
     <h1>All the items that you are going to need for the perfect vacation!</h1>
 
     <h2>Toiletries</h2>
-    <form action="/<%=suitcase[0]._id%>/edit?_method=PUT" method="POST">
+    <form action="/users/<%= user._id %>/items/<%=suitcase[0]._id%>/showCategories?_method=PUT" method="POST">
         <ul>
             <% suitcase[suitcase.findIndex(category => category.name === 'toiletries')].items.forEach(function(item) { %>
                 <li>
-                    <input type="checkbox" name="<%= item.id %>" id="<%= item.id %>" <% if (item.packed) { %>unchecked<% } %>>
+                    <input type="checkbox" name="<%= item.id %>" id="<%= item.id %>" data-packed="<%= item.packed %>" <%= item.packed === 'on' ? 'checked' : '' %>>
                     <label for="<%= item.id %>"><%= item.name %></label>
                     <label for="isPacked">Pack It?</label>
                 </li>
@@ -41,6 +41,7 @@
         </ul>
         <button type="submit">Update Essentials List</button>
     </form>
+    <a href="/users/<%= user._id %>/items/edit">Add items to Essentials List</a>
     <br>
 
     <h2>Specialty Clothes</h2>
@@ -59,6 +60,7 @@
         </ul>
         <button type="submit">Update Specialty Clothes List</button>
     </form>
+    <a href="/users/<%= user._id %>/items/edit">Add Items to Speacialty Clothes Lists</a>
     <br>
 
     <h2>Jackets/Sweaters</h2>
@@ -77,6 +79,7 @@
         </ul>
         <button type="submit">Update Jackets/Sweaters List</button>
     </form>
+    <a href="/users/<%= user._id %>/items/edit">Add Items to Jackets List</a>
     <br>
 
     <h2>Lounge Wear/Athletic Clothes</h2>
@@ -95,6 +98,7 @@
         </ul>
         <button type="submit">Update Lounge Wear/Athletic Clothes List</button>
     </form>
+    <a href="/users/<%= user._id %>/items/edit">Add Items to Lounge Wear List</a>
     <br>
 
     <footer>Designed by: Phillip Costas for his wife</footer>

@@ -10,10 +10,19 @@
     <p>Editing of each section in one place!</p>
     
     <form action="/<%=suitcase[0]._id%>/edit?_method=PUT" method="POST">
-        <input type="textbox" name="name" value="<%=suitcase[0]._id%>">
-        <input type="checkbox">
+        <ul>
+            <% suitcase[suitcase.findIndex(category => category.name === 'toiletries')].items.forEach(function(item) { %>
+                <li>
+                    <input type="checkbox" name="<%= item.id %>" id="<%= item.id %>" <% if (item.packed)  %>>
+                    <label for="<%= item.id %>"><%= item.name %></label>
+                    <label for="isPacked">Pack It?</label>
+                </li>
+            <% }); %>
+        </ul>
+        <button type="submit">Add another item</button>
+        
     </form>
-
+    <button type="delete">Delete</button>
  
 </body>
 </html>
