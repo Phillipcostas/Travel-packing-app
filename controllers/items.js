@@ -57,6 +57,13 @@ router.put("/:items/showCategories", async (req, res) => {
 });
 
 
+
+
+
+
+
+
+
 router.delete('/items/showCategories', async (req, res) => {
     try {
     const currentUser = await User.findById(req.session.user._id);
