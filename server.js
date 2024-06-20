@@ -12,6 +12,7 @@ const session = require('express-session');
 const authController = require('./controllers/auth.js');
 const itemsController = require('./controllers/items.js');
 
+const path = require('path')
 const port = process.env.PORT ? process.env.PORT : '3000';
 
 mongoose.connect(process.env.MONGODB_URI);
@@ -21,6 +22,7 @@ mongoose.connection.on('connected', () => {
 
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
+app.use(express.static(path.join(__dirname, 'public')))
 app.use(morgan('dev'));
 app.use(
   session({

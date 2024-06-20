@@ -33,14 +33,8 @@ router.get("/edit", async (req, res) => {
 
 router.put("/:items/showCategories", async (req, res) => {
   console.log({body:req.body, params:req.params, query:req.query})
-  // if (req.body.isPacked === "on") {
-  //   req.body.isPacked = true;
-  // } else {
-  //   req.body.isPacked = false;
-  // } 
   const user = await User.findById(req.session.user._id)
   const category = user.suitcase.find(x => x._id.toString() === req.params.items)
-  // const item = category.items.id(req.body)
   console.log({user, category})
   for (const [key, value] of Object.entries(req.body)) {
     const x = category.items.id(key)
@@ -49,17 +43,9 @@ router.put("/:items/showCategories", async (req, res) => {
     }
   } 
   await user.save()
-  // const user = await User.find({_id:req.session.user._id});
   const suitcase = user.suitcase;
-  // console.log(User)
-  // await User.findByIdAndUpdate(req.session.user._id, {suitcase:{categories:req.params.items}});
   res.render('items/showCategories.ejs', {suitcase, user});
 });
-
-
-
-
-
 
 
 
